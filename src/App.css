@@ -15,7 +15,7 @@
 body{
   background: var(--backgroungColor);
   color: var(--color);
-  height: 100vh;
+  height: 100%;
 }
 
 .App {
@@ -23,7 +23,7 @@ body{
   padding: 50px 10px;
   max-width: 680px;
   margin: auto;
-  height: 100vh;
+  height: 100%;
 }
 .profile-image{
   width: 100px;

@@ -6,6 +6,7 @@ import Links from './components/Links';
 import axios from 'axios'
 import UserNotFound from './components/UserNotFound'
 import Sponcers from './components/Sponsers';
+import Loading from './components/Loading';
 
 function changeappearance(bodyStyle,cardStyle) {
   
@@ -22,13 +23,17 @@ function changeappearance(bodyStyle,cardStyle) {
 
 
 function App() {
+  const [user, setUser] = useState(true);
   const getData = async () => {
     //get passed url 
     const url = window.location.href;
     //get webpage id from url
     const webpageId = url.split('/')[3];
     console.log(process.env.REACT_APP_BASE_URL);
-    const {data} = await axios.get(process.env.REACT_APP_BASE_URL+'/'+ webpageId);
+    const {data} = await axios.get(process.env.REACT_APP_BASE_URL+'/'+ webpageId).catch((err)=>{
+      setUser(false);
+      console.log(err);
+    })
     console.log(data);
     setwebpageConfig(data);
     changeappearance(data.appearance.bodyStyle,data.appearance.cardStyle);
@@ -39,35 +44,18 @@ function App() {
   }, [])
 
   return (
-    webpageConfig ? (
+    <>
+    {webpageConfig ? (
     <div className="App p-2">
       <Profile profile={webpageConfig.profile} ></Profile>
       <Links links={webpageConfig.links}/>
       <Sponcers sponsers={webpageConfig.sponsers}/>
     </div>
-    ) : <UserNotFound></UserNotFound>
+    ) : <Loading />}
+    {!user ? <UserNotFound></UserNotFound>:null}
+    </>
   );
 }
 
 export default App;
 
-// [
-//   {"id":"1",
-//   "lang":"English"},
-//   {
-//     "id":"2",
-//     "lang":"Hindi"
-//   } ,
-//   {
-//     "id":"3",
-//     "lang":"Telugu"
-//   },
-//   {
-//     "id":"4",
-//     "lang":"Tamil"
-//   },
-//   {
-//     "id":"5",
-//     "lang":"Gujrati"
-//   }
-// ]
