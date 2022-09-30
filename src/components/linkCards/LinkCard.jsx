@@ -1,10 +1,13 @@
 import React from 'react'
 
 function LinkCard({link}) {
+  const openUrl=()=>{
+    window.open(link.url);
+  }
   return (
-    <div className='cursor-pointer' >
+    <div onClick={openUrl} className='cursor-pointer' >
         <div className='link-card'>
-            <p><a target={'_blank'} href={link.url} className='font-medium'>{link.title}</a></p>
+            <p>{link.title}</p>
         </div>
     </div>
   )
