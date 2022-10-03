@@ -6,10 +6,14 @@ function getTrackId(url){
 
 function SpotifyLinkCard({link}) {
   const trackId = getTrackId(link.url);
+  const [loadVideo, setLoadVide] = React.useState(false);
   const [collapsed, setCollapsed] = React.useState(true);
 
   const toggleCollapse = () => {
     setCollapsed(!collapsed);
+    if(!loadVideo){
+      setLoadVide(!loadVideo);
+    }
   }
 
   return (
@@ -18,15 +22,15 @@ function SpotifyLinkCard({link}) {
           <div>
             {link.title}
           </div>
-                <iframe 
+                {loadVideo ? (<iframe 
                 className={`${collapsed ? 'hidden' : ''} transition-all duration-300 ease-in-out rounded mt-2`}
                 src={`https://open.spotify.com/embed/track/${trackId}?utm_source=generator`}
-              frameBorder="0" 
+                frameBorder="0" 
                 width="100%" 
                 // height="380px" 
                 allow="autoplay; clipboard-write; encrypted-media; picture-in-picture"
             >
-            </iframe>
+            </iframe>):""}
         </div>
       </div>
   )

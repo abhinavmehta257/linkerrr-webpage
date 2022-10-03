@@ -1,4 +1,4 @@
-import logo from './logo.svg';
+// import logo from './logo.svg';
 import './App.css';
 import Profile from './components/Profile';
 import React, { useEffect,useState } from 'react'

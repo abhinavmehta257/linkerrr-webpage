@@ -7,9 +7,13 @@ function getTrackId(url){
 function AppleMusicLinkCard({link}) {
   const trackpath = getTrackId(link.url);
   const [collapsed, setCollapsed] = React.useState(true);
+  const [loadVideo, setLoadVide] = React.useState(false);
 
   const toggleCollapse = () => {
     setCollapsed(!collapsed);
+    if(!loadVideo){
+      setLoadVide(!loadVideo);
+    }
   }
 
 
@@ -19,7 +23,7 @@ function AppleMusicLinkCard({link}) {
           <div>
             {link.title}
           </div>
-          <iframe 
+          {loadVideo ? (<iframe 
             allow="autoplay *; encrypted-media *; fullscreen *; clipboard-write" 
             className={`${collapsed ? 'hidden' : ''} transition-all duration-300 ease-in-out rounded mt-2`}
             frameborder="0" 
@@ -29,16 +33,7 @@ function AppleMusicLinkCard({link}) {
             sandbox="allow-forms allow-popups allow-same-origin allow-scripts allow-storage-access-by-user-activation allow-top-navigation-by-user-activation" 
             src={`https://embed.music.apple.com${trackpath}`}>
               
-          </iframe>
-                {/* <iframe 
-                className={`${collapsed ? 'hidden' : ''} transition-all duration-300 ease-in-out rounded mt-2`}
-                src={`https://open.spotify.com/embed/track/${trackId}?utm_source=generator`}
-              frameBorder="0" 
-                width="100%" 
-                // height="380px" 
-                allow="autoplay; clipboard-write; encrypted-media; picture-in-picture"
-            >
-            </iframe> */}
+          </iframe>):""}
         </div>
       </div>
   )
