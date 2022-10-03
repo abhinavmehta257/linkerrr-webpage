@@ -7,6 +7,7 @@ import axios from 'axios'
 import UserNotFound from './components/UserNotFound'
 import Sponcers from './components/Sponsers';
 import Loading from './components/Loading';
+import Footer from './components/Footer'
 
 function changeappearance(bodyStyle,cardStyle) {
   
@@ -29,7 +30,6 @@ function App() {
     const url = window.location.href;
     //get webpage id from url
     const webpageId = url.split('/')[3];
-    console.log(process.env.REACT_APP_BASE_URL);
     const {data} = await axios.get(process.env.REACT_APP_BASE_URL+'/'+ webpageId).catch((err)=>{
       setUser(false);
       console.log(err);
@@ -50,6 +50,7 @@ function App() {
       <Profile profile={webpageConfig.profile} ></Profile>
       <Links links={webpageConfig.links}/>
       <Sponcers sponsers={webpageConfig.sponsers}/>
+      <Footer collabLogo={webpageConfig.appearance.bodyStyle?.collabLogo}></Footer>
     </div>
     ) : <Loading />}
     {!user ? <UserNotFound></UserNotFound>:null}
