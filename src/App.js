@@ -46,11 +46,13 @@ function App() {
   return (
     <>
     {webpageConfig ? (
-    <div className="App p-2">
-      <Profile profile={webpageConfig.profile} ></Profile>
-      <Links links={webpageConfig.links}/>
-      <Sponcers sponsers={webpageConfig.sponsers}/>
-      <Footer collabLogo={webpageConfig.appearance.bodyStyle?.collabLogo}></Footer>
+    <div className="App p-2 flex flex-col justify-between">
+        <div>
+          <Profile profile={webpageConfig.profile} ></Profile>
+          <Links links={webpageConfig.links}/>
+          <Sponcers sponsers={webpageConfig.sponsers}/>
+        </div>
+      <Footer collabLogo={webpageConfig.appearance.bodyStyle?.collabLogo} collabLink={webpageConfig.appearance.bodyStyle?.collabLink}></Footer>
     </div>
     ) : <Loading />}
     {!user ? <UserNotFound></UserNotFound>:null}

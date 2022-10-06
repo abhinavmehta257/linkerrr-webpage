@@ -21,7 +21,7 @@ body{
 
 .App {
   text-align: center;
-  padding: 50px 10px;
+  padding: 50px 10px 0 10px;
   max-width: 680px;
   margin: auto;
   height: 100vh;
@@ -88,4 +88,35 @@ iframe{
 
 summary::marker{
   content: "";
+}
+
+
+@media only screen and (min-width:480) {
+  
+}
+/* @media only screen and (max-width: 600px){
+  #footer .collab img{
+    width: 50px;
+    height: 50px;
+  }
+  #footer .collab .hand{
+    width: 30px;
+    height: 30px;
+  }
+  .website-redirect img{
+    width: 50px;
+  }
+  .website-redirect{
+    font-size: 14px;
+  }
+} */
+
+#footer .collab img{
+  width: 30px;
+}
+.website-redirect img{
+  width: 50px;
+}
+.website-redirect{
+  font-size: 14px;
 }

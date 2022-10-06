@@ -1,22 +1,22 @@
 import React from 'react'
 
-function Footer({collabLogo}) {
-    console.log(collabLogo);
+function Footer({collabLogo, collabLink}) {
+    console.log(collabLink);
   return (
-    <div className='pt-[40px] p-3 text-xl'>
+    <div id='footer' className='relative bottom-0 w-full'>
+      <div className='pt-[40px] p-3 text-xl grow'>
         {collabLogo ? (
-            <div>
-                <a  className='flex justify-center  items-center' target={'_blank'} href="https://theonelink.me">
-                <img width={'80px'} src={'./logo192.png'} alt="" />
-                <img className='w-[30px] h-[30px]' src={'./collab.png'} alt="" />
-                <img width={'50px'} src={collabLogo} alt="" />
+            <div className='collab cursor-pointer '>
+                <a  className='flex justify-center  items-center' target={'_blank'} href={collabLink}>
+                <img src={collabLogo} alt="" />
                 </a>
             </div>
-            
             )
-        :(<a  className='flex justify-center  items-center' target={'_blank'} href="https://theonelink.me">Create your own with <span className=''><img width={'80px'} src={'./logo192.png'} alt="" /></span></a>)}
-        
+        :''}
+        <a  className='website-redirect flex justify-center  items-center' target={'_blank'} href="https://theonelink.me">Create your own with <span className=''><img src={'./logo192.png'} alt="" /></span></a>
     </div>
+    </div>
+    
   )
 }
 
